@@ -23,6 +23,7 @@ body{
     font-size: 15px;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
     a{
         text-decoration: none;
     }
@@ -34,6 +35,7 @@ body{
     position: relative;
     background: url(../images/mobile/image-hero.jpg);
     background-size: cover;
+    background-position: bottom;
     background-repeat: no-repeat;
     padding-block: 4em;
     header{
@@ -45,8 +47,21 @@ body{
         .logo{
             z-index: 10;
             width: 50%;
+            max-width: 180px;
             img{
                 width: 100%;
+            }
+        }
+        .navbar{
+            display: none;
+            *+*{
+                margin-left: 0.2em;
+            }
+            &-link{
+                display: inline-block;
+                padding: 0.75em 0em 0.75em 1em;
+                font-family: var(--alata);
+                color: var(--white);
             }
         }
         .menu{
@@ -90,10 +105,13 @@ body{
     }
     section{
         z-index: 4;
-        margin-block: 9em;        
+        margin-block: 9em;
+        width: 80%; 
+        margin-inline: auto;
+        // border: 1px solid red;       
         h1{
-            width: 80%;
-            margin-inline: auto;
+            max-width: 410px;
+            margin-block: 0;
             border: 1px solid var(--white);
             font-family: var(--josefin);
             font-size: 2rem;
@@ -155,11 +173,14 @@ body{
         gap: 1em;
         .grid-item{
             position: relative;
-            img{
+            .img-mobile{
                 filter: contrast(1.3) brightness(0.8);
                 width: 100%;
                 height: 100%;
                 transition: all 250ms cubic-bezier(.6,.29,.72,1.42);
+            }
+            .img-desktop{
+                display: none;
             }
             h2{
                 margin: 0;
@@ -173,8 +194,8 @@ body{
                 color: var(--white);
             }
             &:hover, &:focus{
-                img{
-                    // transform: scale(1.2);
+                .img-mobile , .img-desktop{
+                    transform: translateY(-10px);
                     opacity: 0.7;
                 }
             }
@@ -203,7 +224,7 @@ body{
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--very-dark-gray);
+            background: var(--black);
             transform: scaleX(0);
             transform-origin: right;
             transition: transform
@@ -211,7 +232,7 @@ body{
             z-index: -1;
         }
         &:hover , &:focus{
-            border-color: var(--very-dark-gray);
+            // border-color: var(--very-dark-gray);
             color: var(--white);
             &::after{
                 transform: scale(1);
@@ -233,6 +254,7 @@ footer{
         &-logo{
             // background: grey;
             width: 60%;
+            max-width: 150px;
             margin-inline: auto;
             img{
                 width: 100%;
@@ -255,12 +277,136 @@ footer{
                 // text-align: center;
             }
         }
+        &-social-links{
+            // border: 1px solid white;
+            display: flex;
+            // flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            *+*{
+                margin-left: 1.3em;
+            }
+            a{
+                font-size: 1.5rem;
+                display: inline-block;
+                
+                color: white;
+            }
+        }
         .copyright{
             margin-block: 0;
             text-align: center;
             font-size: 0.9rem;
             font-weight: 300;
             color: var(--dark-gray);
+        }
+    }
+}
+
+//For IPAD 12PRO
+
+@media only screen and (min-width: 1024px) {
+    .intro{
+        background: url(../images/desktop/image-hero.jpg);
+        background-size: cover;
+        background-position: top right;
+        header{
+            .menu{
+                display: none;
+            }
+            .navbar{
+                display: block;
+            }
+        }
+        section{
+            h1{
+                width: 50%;
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .vr{
+        display: grid;
+        grid-template-columns: repeat(9 , 1fr);
+        padding-inline: 10%;
+        padding-block: 8em;
+        &-image{
+            width: 100%;
+            margin-inline: 0;
+            grid-column: 1/7;
+            grid-row: 1/2;
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+        &-text{
+            align-self: flex-end;
+            padding: 1.3em 0 0 4em;
+            background: var(--white);
+            width: 100%;
+            margin-inline: 0;
+            grid-column: 5/10;
+            grid-row: 1/2;
+            text-align: left;
+            p{
+                margin-bottom: 0;
+                font-size: 0.8rem;
+            }
+        }
+    }
+
+    .creations{
+        &-title{
+            margin-bottom: 1.6em;
+            font-size: 2.2rem;
+        }
+        &-grid{
+            grid-template-columns: repeat(4, minmax(150px, 1fr));
+            .grid-item{
+                .img-desktop{
+                    display: block;
+                    filter: contrast(1.3) brightness(0.8);
+                    width: 100%;
+                    height: 100%;
+                    transition: all 250ms cubic-bezier(.6,.29,.72,1.42);
+                }
+                .img-mobile{
+                    display: none;
+                }
+            }
+        }
+    }
+    footer{
+        .footer{
+            display: flex;
+            justify-content: space-between;
+            .wrapper{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            &-logo{
+                margin-inline: 0;
+            }
+            &-links{
+                // border: 1px solid red;
+                flex-direction: row;
+                padding-block: 0;
+                justify-content: flex-start;
+                // align-items: flex-end;
+                &-item{
+                    margin-bottom: 0;
+                }
+                
+            }
+            &-social-links{
+                justify-content: flex-end;
+            }
+            .copyright{
+                padding-block: 0.3em;
+            }
         }
     }
 }
