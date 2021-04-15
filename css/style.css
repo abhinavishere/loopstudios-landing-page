@@ -65,14 +65,37 @@ body a {
 }
 
 .intro header .navbar * + * {
-  margin-left: 0.2em;
+  margin-left: 0.5em;
 }
 
 .intro header .navbar-link {
+  position: relative;
   display: inline-block;
-  padding: 0.75em 0em 0.75em 1em;
+  padding: 0.75em 1em 0.25em 1em;
   font-family: var(--alata);
+  font-size: 1rem;
   color: var(--white);
+}
+
+.intro header .navbar-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--white);
+  -webkit-transform: scaleX(0.3);
+          transform: scaleX(0.3);
+  -webkit-transition: -webkit-transform 225ms ease-in-out;
+  transition: -webkit-transform 225ms ease-in-out;
+  transition: transform 225ms ease-in-out;
+  transition: transform 225ms ease-in-out, -webkit-transform 225ms ease-in-out;
+}
+
+.intro header .navbar-link:hover::after, .intro header .navbar-link:focus::after {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
 }
 
 .intro header .menu-icon-open {
@@ -116,7 +139,6 @@ body a {
 }
 
 .intro section h1 {
-  max-width: 410px;
   margin-block: 0;
   border: 1px solid var(--white);
   font-family: var(--josefin);
@@ -127,11 +149,12 @@ body a {
 }
 
 .vr {
-  padding: 5.5em 0;
+  padding: 6em 0;
 }
 
 .vr-image {
   width: 80%;
+  max-width: 650px;
   margin-inline: auto;
 }
 
@@ -141,11 +164,13 @@ body a {
 
 .vr-text {
   width: 80%;
+  max-width: 600px;
   margin-inline: auto;
   text-align: center;
 }
 
 .vr-text h1 {
+  font-weight: 300;
   font-family: var(--josefin);
   font-size: 2rem;
   text-transform: uppercase;
@@ -166,6 +191,8 @@ body a {
 }
 
 .creations-title {
+  font-size: 2rem;
+  font-weight: 300;
   width: 80%;
   margin: 0;
   margin-inline: auto;
@@ -209,7 +236,7 @@ body a {
   bottom: 10%;
   left: 7.5%;
   font-family: var(--josefin);
-  font-size: rem;
+  font-size: 1.5rem;
   font-weight: 300;
   text-transform: uppercase;
   color: var(--white);
@@ -226,7 +253,7 @@ body a {
   display: block;
   width: 40%;
   max-width: 150px;
-  margin: 1.5em auto;
+  margin: 2.5em auto 0;
   font-family: var(--alata);
   text-transform: uppercase;
   color: black;
@@ -317,6 +344,7 @@ footer .footer-social-links {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 1.3em;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -333,6 +361,10 @@ footer .footer-social-links a {
   font-size: 1.5rem;
   display: inline-block;
   color: white;
+}
+
+footer .footer-social-links a:hover, footer .footer-social-links a:focus {
+  color: #4381df;
 }
 
 footer .footer .copyright {
@@ -357,7 +389,7 @@ footer .footer .copyright {
   }
   .intro section h1 {
     width: 50%;
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
   .vr {
     display: -ms-grid;
@@ -374,29 +406,28 @@ footer .footer .copyright {
     -ms-grid-column-span: 6;
     grid-column: 1/7;
     -ms-grid-row: 1;
-    -ms-grid-row-span: 1;
-    grid-row: 1/2;
+    -ms-grid-row-span: 2;
+    grid-row: 1/3;
   }
   .vr-image img {
     height: 100%;
     width: 100%;
   }
   .vr-text {
-    -ms-flex-item-align: end;
-        align-self: flex-end;
-    padding: 1.3em 0 0 4em;
+    padding: 3em 0 0 4em;
     background: var(--white);
     width: 100%;
     margin-inline: 0;
     -ms-grid-column: 5;
     -ms-grid-column-span: 5;
     grid-column: 5/10;
-    -ms-grid-row: 1;
+    -ms-grid-row: 2;
     -ms-grid-row-span: 1;
-    grid-row: 1/2;
+    grid-row: 2/3;
     text-align: left;
   }
   .vr-text p {
+    max-width: 450px;
     margin-bottom: 0;
     font-size: 0.8rem;
   }
@@ -454,15 +485,34 @@ footer .footer .copyright {
             justify-content: flex-start;
   }
   footer .footer-links-item {
+    padding: 0.25em 0.5em 0.25em 0;
+    margin-right: 1em;
     margin-bottom: 0;
   }
   footer .footer-social-links {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
+    margin-bottom: 0;
   }
   footer .footer .copyright {
     padding-block: 0.3em;
+  }
+}
+
+@media screen and (min-width: 1350px) {
+  .vr-image {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+    grid-column: 1/6;
+  }
+  .vr-text {
+    padding: 6em 0 0 6em;
+  }
+  .vr-text h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 300;
   }
 }
 /*# sourceMappingURL=style.css.map */
