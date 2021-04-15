@@ -28,14 +28,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-
-
-### Links
-
-
-## My process
+![](./screenshot.png)
 
 ### Built with
 
