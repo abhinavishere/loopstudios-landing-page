@@ -199,11 +199,12 @@ body{
         gap: 1em;
         .grid-item{
             position: relative;
+            overflow: hidden;
             .img-mobile{
                 filter: contrast(1.3) brightness(0.8);
                 width: 100%;
                 height: 100%;
-                transition: all 250ms cubic-bezier(.6,.29,.72,1.42);
+                transition: all 250ms ease-in-out;
             }
             .img-desktop{
                 display: none;
@@ -221,7 +222,7 @@ body{
             }
             &:hover, &:focus{
                 .img-mobile , .img-desktop{
-                    transform: translateY(-10px);
+                    transform: scale(1.2);
                     opacity: 0.7;
                 }
             }
@@ -331,6 +332,18 @@ footer{
     }
 }
 
+.attribution{
+    width: max-content;
+    margin: 2em auto 0;
+    color: var(--dark-gray);
+    font-family: var(--josefin);
+    font-weight: 400;
+    font-size: 0.8rem;
+    a{
+        color: var(--white);
+        font-weight: 700;
+    }
+}
 //For IPAD 12PRO
 
 @media only screen and (min-width: 1024px) {
@@ -402,7 +415,7 @@ footer{
                     filter: contrast(1.3) brightness(0.8);
                     width: 100%;
                     height: 100%;
-                    transition: all 250ms cubic-bezier(.6,.29,.72,1.42);
+                    transition: all 250ms ease-in-out;
                 }
                 .img-mobile{
                     display: none;
@@ -441,6 +454,9 @@ footer{
             .copyright{
                 padding-block: 0.3em;
             }
+        }
+        .attribution{
+            font-size: 1rem;
         }
     }
 }
